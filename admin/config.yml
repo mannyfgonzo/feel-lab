@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main # or master, depending on your default GitHub branch name
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "members"
+    label: "Lab Members"
+    folder: "content/members"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Full Name", name: "name", widget: "string" }
+      - { label: "Role/Title", name: "role", widget: "string" }
+      - { label: "Member Type", name: "type", widget: "select", options: ["current", "alumni"] }
+      - { label: "Profile Photo", name: "image", widget: "image" }
+      - { label: "Bio & Research Focus", name: "bio", widget: "text" }
+      - { label: "Research Interests (comma separated)", name: "interests", widget: "list" }
+      - { label: "Quirky Lab Fact", name: "funFact", widget: "string" }
+      - { label: "Email Address", name: "email", widget: "string" }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+      - { label: "CV PDF Document", name: "cvUrl", widget: "file", required: false }
+      - { label: "Key Publications", name: "memberPubs", widget: "list", required: false }
+
+  - name: "projects"
+    label: "Research Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Focus Area", name: "category", widget: "select", options: ["Fairness", "Emotions", "Well-Being"] }
+      - { label: "Status", name: "status", widget: "string" } # e.g. Data Collection, Under Review
+      - { label: "Lead Researcher(s)", name: "lead", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+
+  - name: "announcements"
+    label: "Achievements & News"
+    folder: "content/announcements"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Summary", name: "summary", widget: "text" }
